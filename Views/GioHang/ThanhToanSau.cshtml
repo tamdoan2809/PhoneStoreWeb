@@ -1,0 +1,98 @@
+﻿@model WebGURDIAN.Models.ThanhToanSauViewModel
+@{
+    ViewBag.Title = "ThanhToanTrucTuyen";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán Sau Khi Nhận Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+            .section h3 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+
+            .section p {
+                color: #777;
+                line-height: 1.6;
+            }
+
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+            .buttons a {
+                text-decoration: none;
+                background-color: #007bff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                margin: 0 10px;
+                transition: background-color 0.3s;
+            }
+
+                .buttons a:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thanh Toán Sau Khi Nhận Hàng</h2>
+        <div class="section">
+            <h3>Thông Tin Đơn Hàng</h3>
+            <p>Mã đơn hàng: <strong>@Model.MaHoaDon</strong></p>
+            <p>Tổng số tiền: <strong>@String.Format("{0:0,0}", Model.TongTien) VNĐ</strong></p>
+        </div>
+        <div class="section">
+            <h3>Hướng Dẫn Thanh Toán</h3>
+            <p>
+                Khi nhận hàng, quý khách có thể thanh toán bằng tiền mặt hoặc thẻ cho
+                nhân viên giao hàng. Vui lòng kiểm tra kỹ thông tin đơn hàng trước khi
+                thanh toán.
+            </p>
+        </div>
+        <div class="section">
+            <h3>Thông Tin Giao Hàng</h3>
+            <p>Tên người nhận: <strong>@Model.HoTen</strong></p>
+            <p>Địa chỉ giao hàng: <strong>@Model.DiaChi</strong></p>
+            <p>Số điện thoại: <strong>@Model.SDT</strong></p>
+            <p>Thời gian giao hàng dự kiến: <strong>3-5 ngày làm việc</strong></p>
+        </div>
+        <div class="buttons">
+            <a href="@Url.Action("GioHang", "GioHang")">Quay về giỏ hàng</a>
+            <a href="@Url.Action("SanPhamAll", "SanPham")">Quay về trang chủ</a>
+        </div>
+    </div>
+</body>
+</html>

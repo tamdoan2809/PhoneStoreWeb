@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "ThanhToanTrucTuyen";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán Trực Tuyến</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 0 0 48%;
+            text-align: center;
+        }
+
+            .column img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                height: 350px; /* Cố định chiều cao */
+                object-fit: cover; /* Giữ tỷ lệ hình ảnh */
+            }
+
+        .content {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            border-radius: 25px;
+        }
+
+            .buttons a {
+                text-decoration: none;
+                background-color: #007bff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                margin: 0 10px;
+                transition: background-color 0.3s;
+            }
+
+                .buttons a:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <h2 class="text-center" style="text-align: center">
+        Thanh Toán Trực Tuyến
+    </h2>
+    <div class="container">
+        <div class="column">
+            <img src="~/images/qr_momo.jpg" alt="Hình ảnh 1" />
+            <div class="content">
+                Số điện thoại : 07039933113
+                <br />
+                Tên người nhận : Đoàn Ngọc Chí Tâm
+            </div>
+        </div>
+        <div class="column">
+            <img src="~/images/qr_bank.jpg" alt="Hình ảnh 2" />
+            <div class="content">
+                Số tài khoản : 6140205837544
+                <br />
+                Ngân hàng : Argibank
+                <br />
+                Tên người nhận : DOAN NGOC CHI TAM
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a href=" @Url.Action("GioHang", "GioHang") ">Quay về giỏ hàng</a>
+        <a href="@Url.Action("SanPhamAll","SanPham")">Quay về trang chủ</a>
+    </div>
+</body>
+</html>
+

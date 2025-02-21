@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@using WebGURDIAN.Models;
+@model List<GioHang>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* CSS cho table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif; /* Thay đổi font chữ */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            color: #333; /* Thay đổi màu sắc của chữ */
+        }
+
+        th {
+            background-color: lightgray;
+            font-weight: bold; /* Kiểu chữ đậm */
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .update-button button img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* CSS cho nút cập nhật */
+        .update-button button {
+            width: 40px; 
+            height: 40px; 
+            padding: 0; /* Loại bỏ padding để hình ảnh fill vào nút */
+            border: none; /* Loại bỏ viền của nút */
+            background: none; /* Loại bỏ nền của nút */
+        }
+
+        /* Màu sắc và kích thước của chữ cho footer */
+        footer {
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: navy;">Giỏ Hàng</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Mã Sản Phẩm</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Ảnh</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn Giá</th>
+                        <th>Thành Tiền</th>
+                        <th>Xóa</th>
+                        <th>Cập Nhật</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.iMaSP</td>
+                            <td>@item.sTenSP</td>
+                            <td><img src="~/images/@item.Hinh" alt="Ảnh sản phẩm" /></td>
+                            <td>
+                                <input type="number" class="form-control soLuong" value="@item.iSoLuong" min="0" />
+                            </td>
+                            <td>@item.dDonGia</td>
+                            <td>@item.dThanhTien</td>
+                            <td>
+                                <a href="@Url.Action("XoaGioHang", "GioHang", new { MaSP = item.iMaSP })" class="btn btn-danger">Xóa</a>
+                            </td>
+                            <td class="update-button">
+                                <form action="@Url.Action("CapNhatGioHang", "GioHang")" method="post">
+                                    <input type="hidden" name="MaSP" value="@item.iMaSP" />
+                                    <input type="number" name="SoLuong" value="@item.iSoLuong" min="0" class="form-control" />
+                                    <button type="submit" class="btn btn-primary">
+                                        <img src="~/images/update.png" alt="Cập nhật" style="width: 25px; height: 25px;" />
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a href="~/GioHang/DatHang" class="btn btn-success">Đặt Hàng</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

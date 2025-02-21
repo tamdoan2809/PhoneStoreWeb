@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập - Guardian</title>
+    <link rel="stylesheet" href="~/CSS/Front-end-css.css" />
+    <link rel="stylesheet" href="~/CSS/DangNhap.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("DangNhap", "User", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            {
+                <div class="login-section">
+                    <h2>ĐĂNG NHẬP</h2>
+                    <p>Chào mừng bạn đến với Hội Cam Guardian</p>
+                    <form>
+                      <label for="username">Tài khoản *</label>
+                      @Html.TextBox("TenDN", null, new { @class = "form-control", placeholder = "Nhập tên đăng nhập" })@ViewBag.Loi1
+                      <label for="password">Mật khẩu *</label>
+                      <div class="password-container">
+                       @Html.Password("MatKhau", null, new { @class = "form-control", placeholder = "Nhập mật khẩu" })@ViewBag.Loi2
+                        <span class="toggle-password" onclick="togglePassword()"></span>
+                      </div>
+                      <a href="#" class="forgot-password">Quên mật khẩu</a>
+                      <button type="submit" class="btn btn-login">ĐĂNG NHẬP</button>
+                    </form>
+                  </div>
+                  <div class="register-section">
+                    <h2>ĐĂNG KÝ HỘI CAM</h2>
+                    <p>
+                      Trở thành thành viên Hội Cam ngay để tận hưởng những đặc quyền có
+                      1-0-2
+                    </p>
+                    <ul>
+                      <li>
+                        <strong>500+ Ưu Đãi Chỉ Dành Cho Hội Cam</strong><br />Hơn 500+ sản
+                        phẩm giảm giá và quà tặng đang chờ đón bạn
+                      </li>
+                      <li>
+                        <strong>Tích Điểm Đổi Voucher Siêu Hời</strong><br />Tích điểm khi
+                        mua hàng và đổi ngay những phần quà có giá trị
+                      </li>
+                      <li>
+                        <strong>Ưu Đãi Sinh Nhật Của Thành Viên</strong><br />Ưu tiên tham
+                        gia các hoạt động, sự kiện của Guardian hoàn toàn miễn phí
+                      </li>
+                    </ul>
+                      <a href="~/User/DangKy" class="btn btn-register">ĐĂNG KÝ HỘI CAM</a>
+              </div>
+            }
+        }
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <p id="popup-message"></p>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+            var message = '@ViewBag.TB';
+            var messageType = '@ViewBag.MessageType';
+
+            if (message) {
+                var popup = document.getElementById("popup");
+                var messageText = document.getElementById("popup-message");
+                messageText.textContent = message;
+                popup.style.display = "block";
+            }
+            document.querySelector(".close-btn").onclick = function() {
+            document.getElementById("popup").style.display = "none";
+            }
+        };
+        </script>
+
+
+        <style>
+            .popup {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1000;
+                background-color: white; /* Nền màu trắng */
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                text-align: center;
+                color: red; /* Chữ màu đỏ */
+                font-size: 35px; /* Cỡ chữ lớn hơn */
+            }
+            .popup-content {
+                text-align: center;
+            }
+
+            .close-btn {
+                float: right;
+                cursor: pointer;
+            }
+        </style>
+
+    </div>
+</body>
+</html>
+
+
+

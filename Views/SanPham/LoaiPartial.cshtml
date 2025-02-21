@@ -1,0 +1,15 @@
+﻿@model List<WebGURDIAN.Models.DANHMUCSP>
+<ul class="list-group list-group-flush text-left">
+    <li class="list-group-item" style="background-color:snow;">
+        <a href="#" style="text-transform:uppercase; text-decoration: none; color: dimgrey; color:black; font-weight:bold;">DANH MỤC SẢN PHẨM</a>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <a href="#" style="text-transform:uppercase; text-decoration: none; color: dimgrey;">
+                <a href="~/SanPham/SPTheoLoai?maLoai=@item.MADM"> @item.TENDM </a>
+            </a>
+        </li>
+    }
+</ul>
+

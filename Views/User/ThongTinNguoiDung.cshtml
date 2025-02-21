@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ThongTinNguoiDung";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@using WebGURDIAN.Models
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Hồ Sơ Người Dùng</title>
+    <link rel="stylesheet" href="~/CSS/ThongTinNguoiDung.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="profile-wrapper">
+            <!-- Cột chứa hình ảnh -->
+            <div class="col-image">
+                <img src="~/images/user-icon.png" alt="User Image" />
+            </div>
+            <!-- Cột chứa thông tin người dùng -->
+            <div class="col-info">
+                <div class="info-item">
+                    <label>Họ Tên: </label>
+                    <span>@Model.HOTEN</span>
+                </div>
+                <div class="info-item">
+                    <label>Ngày Sinh: </label>
+                    <span>@Model.NGAYSINH</span>
+                </div>
+                <div class="info-item">
+                    <label>Địa Chỉ: </label>
+                    <span>@Model.DIACHI</span>
+                </div>
+                <div class="info-item">
+                    <label>Số Điện Thoại: </label>
+                    <span>@Model.SDT</span>
+                </div>
+                <div class="info-item">
+                    <label>Email: </label>
+                    <span>@Model.EMAIL</span>
+                </div>
+                <div class="info-item">
+                    <label>Giới Tính: </label>
+                    <span>@Model.GIOITINH</span>
+                </div>
+                <div class="button-group">
+                    <a href="~/User/CapNhatThongTin" class="btn btn-primary">Cập Nhật</a>
+                    <a href="#" class="btn btn-secondary">Đơn Hàng</a>
+                    <a href="~/User/DoiMatKhau" class="btn btn-tertiary">Đổi Mật Khẩu</a>
+                    <a href="@Url.Action("DangXuat", "User")" class="btn btn-tertiary">Đăng Xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

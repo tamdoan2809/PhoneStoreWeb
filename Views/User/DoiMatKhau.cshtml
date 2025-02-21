@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<div class="container">
+    <h1>Đổi Mật Khẩu</h1>
+    <p>Vui lòng nhập thông tin bên dưới để đổi mật khẩu</p>
+
+    @using (Html.BeginForm("DoiMatKhau", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label for="matKhauHienTai">Mật Khẩu Hiện Tại *</label>
+            @Html.Password("matKhauHienTai", "", new { @class = "form-control", placeholder = "Nhập mật khẩu hiện tại" })
+            <span class="text-danger">@ViewBag.Message</span>  <!-- Hiển thị lỗi nếu có -->
+        </div>
+
+        <div class="form-group">
+            <label for="matKhauMoi">Mật Khẩu Mới *</label>
+            @Html.Password("matKhauMoi", "", new { @class = "form-control", placeholder = "Nhập mật khẩu mới" })
+        </div>
+
+        <div class="form-group">
+            <label for="nhapLaiMatKhauMoi">Xác Nhận Mật Khẩu Mới *</label>
+            @Html.Password("nhapLaiMatKhauMoi", "", new { @class = "form-control", placeholder = "Nhập lại mật khẩu mới" })
+        </div>
+
+        <button type="submit" class="btn-register">Đổi Mật Khẩu</button>
+    }
+</div>
+
+

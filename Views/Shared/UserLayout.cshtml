@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+@using WebGURDIAN.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/CSS/Front-end-css.css" />
+</head>
+<header>
+    <div class="container">
+        <a href="~/SanPham/SanPhamAll" class="logo">Guardian</a>
+        <div class="col-8 mt-4">
+            <form class="form-inline" action="~/SanPham/TimSanPham" method="GET">
+                <div class="input-group">
+                    <input class="form-control mx-auto rounded-pill" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search" name="txt_Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary ml-2" type="submit">Tìm kiếm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="header-buttons d-flex align-items-center">
+            @if (Session["UserName"] != null)
+            {
+                <a href="@Url.Action("ThongTinNguoiDung", "User", new { mnd = Session["UserId"] })">
+                    <img src="~/images/user_icon.png" alt="User Icon" style="width: 40px; height: 40px;">
+                    <span style="margin-left: 8px;">@Session["UserName"]</span>
+                </a>
+            }
+            else
+            {
+                <a href="~/User/DangKy" class="cta-button">Đăng ký</a>
+                <a href="~/User/DangNhap" class="cta-button secondary ml-2">Đăng nhập</a>
+            }
+            <div class="user-icon ml-2">
+                <a href="~/GioHang/GioHang">
+                    <img src="~/images/cart-logo.jpg" style="width: 40px; height: 40px; background-color: transparent; ">
+                </a>
+            </div>
+            </div>
+    </div>
+</header>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="~/images/banner1.jpg" alt="Slide 1" />
+                    </div>
+                    <div class="slide">
+                        <img src="~/images/banner2.jpg" alt="Slide 2" />
+                    </div>
+                    <div class="slide">
+                        <img src="~/images/banner3.jpg" alt="Slide 3" />
+                    </div>
+                    <div class="slide">
+                        <img src="~/images/banner4.jpg" alt="Slide 3" />
+                    </div>
+                    <div class="slide">
+                        <img src="~/images/banner5.png" alt="Slide 3" />
+                    </div>
+                </div>
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-md-2 card">
+            <!--Hiển thị loại sản phẩm-->
+            @Html.Action("LoaiPartial", "SanPham")
+        </div>
+        <div class="col-md-10 product-content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="container">
+        <div class="footer-info">
+            <p>&copy; 2024 Guardian Vietnam. Tất cả quyền lợi được bảo lưu.</p>
+            <p>
+                Địa chỉ: Guardian Lê Trọng Tấn 2: 115A Đường Lê Trọng Tấn, Phường
+                Sơn Kỳ, Quận Tân Phú, Thành phố Hồ Chí Minh
+            </p>
+            <p>Điện thoại: 19004449</p>
+            <p>Email: contact@guardian.com.vn</p>
+            <img src="~/images/logoSaleNoti.png"></div>
+        <div class="footer-social">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </div>
+</footer>
+
+<script src="~/JS/Front-end-js.js"></script>
+</body>
+</html>

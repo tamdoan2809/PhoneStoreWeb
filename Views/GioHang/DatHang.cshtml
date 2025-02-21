@@ -1,0 +1,140 @@
+﻿@using WebGURDIAN.Models
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2 class="text-center">ĐƠN ĐẶT HÀNG</h2>
+<div class="container">
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr class="font-weight-bold">
+                <td>Mã Sản Phẩm</td>
+                <td>Tên Sản Phẩm</td>
+                <td>Ảnh</td>
+                <td>Số Lượng</td>
+                <td>Đơn Giá</td>
+                <td>Thành Tiền</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.iMaSP</td>
+                    <td>@item.sTenSP</td>
+                    <td><img src="~/images/@item.Hinh" class="img-fluid" style="max-width: 100px;" /></td>
+                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSP = item.iMaSP }))
+                    {
+                        <td><input type="number" min="1" name="txtSoLuong" value="@item.iSoLuong" class="form-control" /></td>
+                        <td>@String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
+                        <td>@String.Format("{0:0,0}", item.dThanhTien) VNĐ</td>
+                    }
+                </tr>
+            }
+            <tr class="bg-light">
+                <td colspan="3" class="text-right text-primary font-weight-bold">Tổng Cộng:</td>
+                <td class="text-danger font-weight-bold">@ViewBag.TongSoLuong</td>
+                <td></td>
+                <td class="text-danger font-weight-bold">@String.Format("{0:0,0}", @ViewBag.TongThanhTien) VNĐ</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="text-center">THÔNG TIN ĐẶT HÀNG</h2>
+@{
+    NGUOIDUNG kh = (NGUOIDUNG)Session["taikhoan"];
+}
+<div class="container mb-5">
+    @using (Html.BeginForm("DatHang", "GioHang", FormMethod.Post))
+    {
+        <table class="table">
+            <tr>
+                <td>Họ Tên Khách Hàng</td>
+                <td class="font-weight-bold">@kh.HOTEN</td>
+            </tr>
+            <tr>
+                <td>Địa Chỉ</td>
+                <td class="font-weight-bold">@kh.DIACHI</td>
+            </tr>
+            <tr>
+                <td>Điện Thoại</td>
+                <td class="font-weight-bold">@kh.SDT</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td class="font-weight-bold">@kh.EMAIL</td>
+            </tr>
+            <tr>
+                <td>Ngày Đặt</td>
+                <td class="font-weight-bold">@DateTime.Now.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" name="paymentMethod" value="TrucTuyen" class="btn btn-success">Thanh Toán Trực Tuyến</button>
+                    <button type="submit" name="paymentMethod" value="Sau" class="btn btn-primary ml-2">Thanh Toán Sau Khi Nhận Hàng</button>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+<style>
+    h2.text-center {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .table {
+        margin-bottom: 30px;
+    }
+
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+
+    .img-fluid {
+        max-width: 100px;
+        height: auto;
+    }
+</style>
