@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebGURDIAN", "WebGURDIAN.csproj", "{B44CB63F-4CD3-41F2-ACF6-2A1E4E67EBF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B44CB63F-4CD3-41F2-ACF6-2A1E4E67EBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44CB63F-4CD3-41F2-ACF6-2A1E4E67EBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44CB63F-4CD3-41F2-ACF6-2A1E4E67EBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44CB63F-4CD3-41F2-ACF6-2A1E4E67EBF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E3E87E5-B440-4523-BB18-81382EE940ED}
+	EndGlobalSection
+EndGlobal
