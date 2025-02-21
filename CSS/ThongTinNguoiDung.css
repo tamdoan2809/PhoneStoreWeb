@@ -1,0 +1,90 @@
+/* Container chính để định dạng cột */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Khối chứa ảnh và thông tin */
+.profile-wrapper {
+  display: flex;
+  width: 200%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Cột chứa hình ảnh */
+.col-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Định dạng hình ảnh */
+.col-image img {
+  width: 250px; /* Điều chỉnh kích thước hình ảnh tùy ý */
+  height: 250px; /* Điều chỉnh kích thước hình ảnh tùy ý */
+  object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+  border-radius: 50%; /* Tạo hiệu ứng hình tròn cho ảnh */
+}
+/* Cột chứa thông tin */
+.col-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+/* Khối thông tin người dùng */
+.info-item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Định dạng label và span */
+.info-item label {
+  font-weight: bold;
+  width: 150px; /* Điều chỉnh chiều rộng tùy ý */
+  display: inline-block;
+}
+
+.info-item span {
+  flex: 1;
+  text-align: right;
+  font-weight: normal; /* Đặt lại font-weight của span về bình thường */
+}
+
+/* Định dạng nhóm nút */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Định dạng nút */
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-tertiary {
+  background-color: #28a745;
+}
+.btn-four {
+  background-color: #c327d0;
+}
